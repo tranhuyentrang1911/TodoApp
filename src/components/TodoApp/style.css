@@ -26,7 +26,7 @@ html {
           justify-content: center;
 }
 
-.form {
+.form#form_todo {
   width: 600px;
   min-height: 400px;
   max-height: 500px;
