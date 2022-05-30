@@ -38,7 +38,6 @@ const FormSignUp = () => {
       placeholder: "abc@gmail.com",
       errorMessage: "Email Invalid",
       label: "Email *",
-      pattern: "^[w-.]+@([w-]+.)+[w-]{2,4}$",
       required: true,
     },
     {
