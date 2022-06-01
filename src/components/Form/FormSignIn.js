@@ -29,11 +29,37 @@ const FormSignIn = () => {
       required: true,
     },
   ];
+  function fetchToken(url) {
+    fetch(url)
+      .then(function (response) {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        // Read the response as json.
+        return response.json();
+      })
+      .then(function (responseAsJson) {
+        // Do stuff with the JSON
+        localStorage.setItem("storageKey", JSON.stringify(responseAsJson));
+      })
+      .catch(function (error) {
+        console.log("Looks like there was a problem: \n", error);
+      });
+  }
+
+  const checkAuth = (url) => {
+    fetchToken(url);
+    if (localStorage.getItem("storageKey")) return true;
+    return false;
+  };
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
+    const url = "https://app-json-demo.herokuapp.com/api/login";
     e.preventDefault();
-    navigate("/TodoApp");
+    if (checkAuth(url)) {
+      navigate("/TodoApp");
+    }
   };
 
   const onChange = (e) => {

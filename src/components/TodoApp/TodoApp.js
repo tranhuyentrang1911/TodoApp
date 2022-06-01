@@ -61,36 +61,34 @@ const TodoApp = () => {
   }, []);
 
   return (
-    <>
-      <div className="main">
-        <form
-          className="form"
-          id="form_todo"
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <h2>TO - DO LIST</h2>
-          <div className="spacer"></div>
-          <input
-            className="todo_input"
-            type="text"
-            placeholder="Enter your work"
-            value={textInput}
-            onChange={onTextInputChange}
+    <div className="main">
+      <form
+        className="form"
+        id="form_todo"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <h2>TO - DO LIST</h2>
+        <div className="spacer"></div>
+        <input
+          className="todo_input"
+          type="text"
+          placeholder="Enter your work"
+          value={textInput}
+          onChange={onTextInputChange}
+        />
+        <button className="button_add" onClick={onAddBtnCLick}>
+          Add
+        </button>
+        <div className="container">
+          <TodoList
+            todoList={todoList}
+            onCheckBtnClick={onCheckBtnClick}
+            onDeleteBtnClick={onDeleteBtnClick}
+            onUpdateBtnClick={onUpdateBtnClick}
           />
-          <button className="button_add" onClick={onAddBtnCLick}>
-            Add
-          </button>
-          <div className="container">
-            <TodoList
-              todoList={todoList}
-              onCheckBtnClick={onCheckBtnClick}
-              onDeleteBtnClick={onDeleteBtnClick}
-              onUpdateBtnClick={onUpdateBtnClick}
-            />
-          </div>
-        </form>
-      </div>
-    </>
+        </div>
+      </form>
+    </div>
   );
 };
 
